@@ -112,6 +112,7 @@ export class Exec {
       };
       const queryStr = querystring.stringify(query);
       const path = `/api/v1/namespaces/${namespace}/pods/${podName}/exec?${queryStr}`;
+      console.log(`CDD: Path is ${path}`);
       const conn = await this.handler.connect(
           path,
           null,
