@@ -93,7 +93,7 @@ export class Exec {
       namespace: string,
       podName: string,
       containerName: string,
-      command: string | string[] | null,
+      _command: string | string[] | null,
       args: string | string [] | null,
       stdout: stream.Writable | null,
       stderr: stream.Writable | null,
@@ -106,13 +106,14 @@ export class Exec {
           stderr: stderr != null,
           stdin: stdin != null,
           tty,
-          command: command != null,
-          args: args != null,
+          // command: command != null,
+          args,
           container: containerName,
       };
+
       const queryStr = querystring.stringify(query);
       const path = `/api/v1/namespaces/${namespace}/pods/${podName}/exec?${queryStr}`;
-      console.log(`CDD: Path is ${path}`);
+      // console.log(`CDD: Path is ${path}`);
       const conn = await this.handler.connect(
           path,
           null,
